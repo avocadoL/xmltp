@@ -1,0 +1,24 @@
+version: '3'
+services:
+  xml-processor:
+    build: .
+    volumes:
+      - ./transport:/xml/transport
+      - ./marketplace:/xml/marketplace
+      - ./output:/xml/output
+    environment:
+      - LANG=C.UTF-8
+    command: >
+      sh -c "
+        mkdir -p /xml/output &&
+        echo 'Running XML validations and transformations...' &&
+        xmllint --noout --dtdvalid transport/schema.dtd transport/data.xml &&
+        xmllint --noout --schema transport/schema.xsd transport/data.xml &&
+        xsltproc -o output/transport_report.html transport/rapport.xslt transport/data.xml &&
+        xsltproc -o output/transport_grouping.xml transport/groupement.xslt transport/data.xml &&
+        xmllint --noout --dtdvalid marketplace/schema.dtd marketplace/data.xml &&
+        xmllint --noout --schema marketplace/schema.xsd marketplace/data.xml &&
+        xsltproc -o output/marketplace_report.html marketplace/rapport.xslt marketplace/data.xml &&
+        xsltproc -o output/marketplace_grouping.xml marketplace/groupement.xslt marketplace/data.xml &&
+        echo 'All operations completed. Check the output directory for results.'
+      " 

@@ -1,0 +1,34 @@
+<!-- DTD for Transport Platform Management System -->
+<!ELEMENT plateforme_transport (modes_transport, reservations, statistiques)>
+
+<!ELEMENT modes_transport (mode+)>
+<!ELEMENT mode (itineraire+)>
+<!ATTLIST mode type (Train|Bus|Avion|Bateau) #REQUIRED>
+
+<!ELEMENT itineraire (depart, arrivee, horaire, arrets?, prix)>
+<!ATTLIST itineraire id ID #REQUIRED>
+
+<!ELEMENT depart (#PCDATA)>
+<!ELEMENT arrivee (#PCDATA)>
+<!ELEMENT horaire (#PCDATA)>
+<!ELEMENT prix (#PCDATA)>
+<!ATTLIST prix devise CDATA #REQUIRED>
+
+<!ELEMENT arrets (arret+)>
+<!ELEMENT arret (ville, horaire)>
+<!ELEMENT ville (#PCDATA)>
+
+<!ELEMENT reservations (reservation*)>
+<!ELEMENT reservation (voyageur, itineraire_ref, date_depart, prix)>
+<!ATTLIST reservation id ID #REQUIRED>
+<!ELEMENT voyageur (#PCDATA)>
+<!ELEMENT itineraire_ref (#PCDATA)>
+<!ELEMENT date_depart (#PCDATA)>
+
+<!ELEMENT statistiques (reservations_par_mode, itineraire_plus_emprunte, revenu_total)>
+<!ELEMENT reservations_par_mode (mode_stat*)>
+<!ELEMENT mode_stat (#PCDATA)>
+<!ATTLIST mode_stat type (Train|Bus|Avion|Bateau) #REQUIRED>
+<!ELEMENT itineraire_plus_emprunte (#PCDATA)>
+<!ELEMENT revenu_total (#PCDATA)>
+<!ATTLIST revenu_total devise CDATA #REQUIRED> 

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<groupement_reservations>
+  <itineraire id="TR001">
+    <informations>
+      <mode>Train</mode>
+      <depart>Casablanca</depart>
+      <arrivee>Rabat</arrivee>
+      <prix devise="EUR">45.00</prix>
+    </informations>
+    <reservations>
+      <reservation id="RES001">
+        <voyageur>Belhad Houda</voyageur>
+        <date_depart>2024-02-15</date_depart>
+        <prix devise="EUR">45.00</prix>
+      </reservation>
+    </reservations>
+    <statistiques>
+      <nombre_reservations>1</nombre_reservations>
+      <revenu_total devise="EUR">45</revenu_total>
+    </statistiques>
+  </itineraire>
+  <itineraire id="BUS001">
+    <informations>
+      <mode>Bus</mode>
+      <depart>Rabat</depart>
+      <arrivee>Fès</arrivee>
+      <prix devise="EUR">25.00</prix>
+    </informations>
+    <reservations/>
+    <statistiques>
+      <nombre_reservations>0</nombre_reservations>
+      <revenu_total devise="EUR">0</revenu_total>
+    </statistiques>
+  </itineraire>
+</groupement_reservations>

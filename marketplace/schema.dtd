@@ -1,0 +1,36 @@
+<!-- DTD for International Marketplace System -->
+<!ELEMENT marketplace (vendeurs, commandes)>
+
+<!ELEMENT vendeurs (vendeur+)>
+<!ELEMENT vendeur (nom, pays, boutique)>
+<!ATTLIST vendeur id ID #REQUIRED>
+
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT pays (#PCDATA)>
+<!ELEMENT boutique (produit*)>
+
+<!ELEMENT produit (nom, categorie, description, prix, stock)>
+<!ATTLIST produit id ID #REQUIRED>
+
+<!ELEMENT categorie (#PCDATA)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT prix (#PCDATA)>
+<!ATTLIST prix devise CDATA #REQUIRED>
+<!ELEMENT stock (#PCDATA)>
+
+<!ELEMENT commandes (commande*)>
+<!ELEMENT commande (client, produits, total, date_achat)>
+<!ATTLIST commande id ID #REQUIRED>
+
+<!ELEMENT client (#PCDATA)>
+<!ELEMENT produits (produit_commande+)>
+<!ELEMENT produit_commande (quantite, prix_unitaire)>
+<!ATTLIST produit_commande ref IDREF #REQUIRED>
+
+<!ELEMENT quantite (#PCDATA)>
+<!ELEMENT prix_unitaire (#PCDATA)>
+<!ATTLIST prix_unitaire devise CDATA #REQUIRED>
+
+<!ELEMENT total (#PCDATA)>
+<!ATTLIST total devise CDATA #REQUIRED>
+<!ELEMENT date_achat (#PCDATA)> 

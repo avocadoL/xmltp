@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<marketplace>
+    <vendeurs>
+        <vendeur id="V001">
+            <nom>Tech Solutions</nom>
+            <pays>France</pays>
+            <boutique>
+                <produit id="P001">
+                    <nom>Laptop Pro X1</nom>
+                    <categorie>Informatique</categorie>
+                    <description>Ordinateur portable haute performance</description>
+                    <prix devise="EUR">999.99</prix>
+                    <stock>10</stock>
+                </produit>
+                <produit id="P002">
+                    <nom>Souris Gaming</nom>
+                    <categorie>Accessoires</categorie>
+                    <description>Souris gaming RGB</description>
+                    <prix devise="EUR">49.99</prix>
+                    <stock>3</stock>
+                </produit>
+            </boutique>
+        </vendeur>
+        <vendeur id="V002">
+            <nom>ElectroShop</nom>
+            <pays>Belgique</pays>
+            <boutique>
+                <produit id="P003">
+                    <nom>Smartphone X20</nom>
+                    <categorie>Électronique</categorie>
+                    <description>Smartphone dernière génération</description>
+                    <prix devise="EUR">799.99</prix>
+                    <stock>15</stock>
+                </produit>
+            </boutique>
+        </vendeur>
+    </vendeurs>
+
+    <commandes>
+        <commande id="C001">
+            <client>Jean Dupont</client>
+            <produits>
+                <produit_commande ref="P001">
+                    <quantite>1</quantite>
+                    <prix_unitaire devise="EUR">999.99</prix_unitaire>
+                </produit_commande>
+                <produit_commande ref="P002">
+                    <quantite>2</quantite>
+                    <prix_unitaire devise="EUR">49.99</prix_unitaire>
+                </produit_commande>
+            </produits>
+            <total devise="EUR">1099.97</total>
+            <date_achat>2024-02-01</date_achat>
+        </commande>
+        <commande id="C002">
+            <client>Marie Martin</client>
+            <produits>
+                <produit_commande ref="P003">
+                    <quantite>1</quantite>
+                    <prix_unitaire devise="EUR">799.99</prix_unitaire>
+                </produit_commande>
+            </produits>
+            <total devise="EUR">799.99</total>
+            <date_achat>2024-02-10</date_achat>
+        </commande>
+    </commandes>
+</marketplace> 

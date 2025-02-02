@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<produits_par_categorie>
+  <categorie>
+    <nom>Accessoires</nom>
+    <produits>
+      <produit id="P002">
+        <nom>Souris Gaming</nom>
+        <description>Souris gaming RGB</description>
+        <vendeur>
+          <nom>Tech Solutions</nom>
+          <pays>France</pays>
+        </vendeur>
+        <prix devise="EUR">49.99</prix>
+        <stock>3</stock>
+        <statistiques>
+          <ventes_totales>2</ventes_totales>
+          <revenu_total devise="EUR">99.98</revenu_total>
+        </statistiques>
+      </produit>
+      <statistiques_categorie>
+        <nombre_produits>1</nombre_produits>
+        <prix_moyen devise="EUR">49.99</prix_moyen>
+        <stock_total>3</stock_total>
+      </statistiques_categorie>
+    </produits>
+  </categorie>
+  <categorie>
+    <nom>Informatique</nom>
+    <produits>
+      <produit id="P001">
+        <nom>Laptop Pro X1</nom>
+        <description>Ordinateur portable haute performance</description>
+        <vendeur>
+          <nom>Tech Solutions</nom>
+          <pays>France</pays>
+        </vendeur>
+        <prix devise="EUR">999.99</prix>
+        <stock>10</stock>
+        <statistiques>
+          <ventes_totales>1</ventes_totales>
+          <revenu_total devise="EUR">999.99</revenu_total>
+        </statistiques>
+      </produit>
+      <statistiques_categorie>
+        <nombre_produits>1</nombre_produits>
+        <prix_moyen devise="EUR">999.99</prix_moyen>
+        <stock_total>10</stock_total>
+      </statistiques_categorie>
+    </produits>
+  </categorie>
+  <categorie>
+    <nom>Électronique</nom>
+    <produits>
+      <produit id="P003">
+        <nom>Smartphone X20</nom>
+        <description>Smartphone dernière génération</description>
+        <vendeur>
+          <nom>ElectroShop</nom>
+          <pays>Belgique</pays>
+        </vendeur>
+        <prix devise="EUR">799.99</prix>
+        <stock>15</stock>
+        <statistiques>
+          <ventes_totales>1</ventes_totales>
+          <revenu_total devise="EUR">799.99</revenu_total>
+        </statistiques>
+      </produit>
+      <statistiques_categorie>
+        <nombre_produits>1</nombre_produits>
+        <prix_moyen devise="EUR">799.99</prix_moyen>
+        <stock_total>15</stock_total>
+      </statistiques_categorie>
+    </produits>
+  </categorie>
+</produits_par_categorie>

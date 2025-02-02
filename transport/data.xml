@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plateforme_transport>
+    <modes_transport>
+        <mode type="Train">
+            <itineraire id="TR001">
+                <depart>Casablanca</depart>
+                <arrivee>Rabat</arrivee>
+                <horaire>2024-02-15T08:00</horaire>
+                <arrets>
+                    <arret>
+                        <ville>Mohammedia</ville>
+                        <horaire>2024-02-15T08:30</horaire>
+                    </arret>
+                </arrets>
+                <prix devise="EUR">45.00</prix>
+            </itineraire>
+        </mode>
+        <mode type="Bus">
+            <itineraire id="BUS001">
+                <depart>Rabat</depart>
+                <arrivee>Fès</arrivee>
+                <horaire>2024-02-15T09:00</horaire>
+                <prix devise="EUR">25.00</prix>
+            </itineraire>
+        </mode>
+    </modes_transport>
+    
+    <reservations>
+        <reservation id="RES001">
+            <voyageur>Belhad Houda</voyageur>
+            <itineraire_ref>TR001</itineraire_ref>
+            <date_depart>2024-02-15</date_depart>
+            <prix devise="EUR">45.00</prix>
+        </reservation>
+    </reservations>
+    
+    <statistiques>
+        <reservations_par_mode>
+            <mode_stat type="Train">15</mode_stat>
+            <mode_stat type="Bus">8</mode_stat>
+        </reservations_par_mode>
+        <itineraire_plus_emprunte>TR001</itineraire_plus_emprunte>
+        <revenu_total devise="EUR">875.00</revenu_total>
+    </statistiques>
+</plateforme_transport> 

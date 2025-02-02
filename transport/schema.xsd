@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Types de base -->
+    <xs:simpleType name="modeTransportType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Train"/>
+            <xs:enumeration value="Bus"/>
+            <xs:enumeration value="Avion"/>
+            <xs:enumeration value="Bateau"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="horaireType">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="\d{4}-\d{2}-\d{2}T\d{2}:\d{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="prixType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Éléments complexes -->
+    <xs:element name="plateforme_transport">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="modes_transport">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="mode" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="itineraire" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="depart" type="xs:string"/>
+                                                    <xs:element name="arrivee" type="xs:string"/>
+                                                    <xs:element name="horaire" type="horaireType"/>
+                                                    <xs:element name="arrets" minOccurs="0">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="arret" maxOccurs="unbounded">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="ville" type="xs:string"/>
+                                                                            <xs:element name="horaire" type="horaireType"/>
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="prix">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="prixType">
+                                                                    <xs:attribute name="devise" type="xs:string" use="required"/>
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute name="id" type="xs:ID" use="required"/>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="type" type="modeTransportType" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="reservations">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="reservation" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="voyageur" type="xs:string"/>
+                                        <xs:element name="itineraire_ref" type="xs:IDREF"/>
+                                        <xs:element name="date_depart" type="xs:date"/>
+                                        <xs:element name="prix">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="prixType">
+                                                        <xs:attribute name="devise" type="xs:string" use="required"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="statistiques">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="reservations_par_mode">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="mode_stat" maxOccurs="unbounded">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="xs:integer">
+                                                        <xs:attribute name="type" type="modeTransportType" use="required"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="itineraire_plus_emprunte" type="xs:IDREF"/>
+                            <xs:element name="revenu_total">
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="prixType">
+                                            <xs:attribute name="devise" type="xs:string" use="required"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema> 

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    
+    <!-- Types de base -->
+    <xs:simpleType name="categorieType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Informatique"/>
+            <xs:enumeration value="Accessoires"/>
+            <xs:enumeration value="Électronique"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="prixType">
+        <xs:restriction base="xs:decimal">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="stockType">
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <!-- Éléments complexes -->
+    <xs:element name="marketplace">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="vendeurs">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="vendeur" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="nom" type="xs:string"/>
+                                        <xs:element name="pays" type="xs:string"/>
+                                        <xs:element name="boutique">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="produit" minOccurs="0" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="nom" type="xs:string"/>
+                                                                <xs:element name="categorie" type="categorieType"/>
+                                                                <xs:element name="description" type="xs:string"/>
+                                                                <xs:element name="prix">
+                                                                    <xs:complexType>
+                                                                        <xs:simpleContent>
+                                                                            <xs:extension base="prixType">
+                                                                                <xs:attribute name="devise" type="xs:string" use="required"/>
+                                                                            </xs:extension>
+                                                                        </xs:simpleContent>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="stock" type="stockType"/>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="id" type="xs:ID" use="required"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                
+                <xs:element name="commandes">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="commande" minOccurs="0" maxOccurs="unbounded">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="client" type="xs:string"/>
+                                        <xs:element name="produits">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="produit_commande" maxOccurs="unbounded">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="quantite" type="xs:positiveInteger"/>
+                                                                <xs:element name="prix_unitaire">
+                                                                    <xs:complexType>
+                                                                        <xs:simpleContent>
+                                                                            <xs:extension base="prixType">
+                                                                                <xs:attribute name="devise" type="xs:string" use="required"/>
+                                                                            </xs:extension>
+                                                                        </xs:simpleContent>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                            <xs:attribute name="ref" type="xs:IDREF" use="required"/>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="total">
+                                            <xs:complexType>
+                                                <xs:simpleContent>
+                                                    <xs:extension base="prixType">
+                                                        <xs:attribute name="devise" type="xs:string" use="required"/>
+                                                    </xs:extension>
+                                                </xs:simpleContent>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="date_achat" type="xs:date"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema> 
